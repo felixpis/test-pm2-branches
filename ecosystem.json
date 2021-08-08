@@ -1,0 +1,26 @@
+{
+  "apps": [
+      {
+          "name": "test-pm2",
+          "script": "index.js",
+          "log_date_format": "YYYY-MM-DD HH:mm Z",
+          "out_file": "/home/felixp/sites/test-pm2/logs/out.log",
+          "error_file": "/home/felixp/sites/test-pm2/logs/out.log",
+          "env": {
+              "NODE_ENV": "production",
+              "PORT": 3333
+          }
+      }
+  ],
+  "deploy": {
+      "production": {
+          "user": "felixp",
+          "host": "37.139.22.221",
+          "ref": "origin/master",
+          "repo": "https://github.com/felixpis/test-pm2-branches.git",
+          "path": "/home/felixp/sites/test-pm2/server",
+          "pre-deploy-local": "echo 'Started to deploy'",
+          "post-deploy": "npm install && pm2 startOrRestart ecosystem.json"
+      }
+  }
+}
