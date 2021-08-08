@@ -1,4 +1,4 @@
-{
+module.exports = {
   "apps": [
       {
           "name": "test-pm2",
@@ -16,7 +16,7 @@
       "production": {
           "user": "felixp",
           "host": "37.139.22.221",
-          "ref": "origin/master",
+          "ref": process.env.DEPLOY_BRANCH,
           "repo": "https://github.com/felixpis/test-pm2-branches.git",
           "path": "/home/felixp/sites/test-pm2/server",
           "pre-deploy-local": "echo 'Started to deploy'",
